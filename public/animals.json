@@ -1,4 +1,4 @@
-[{"question": "select animals",
+{"question": "select animals",
 "all_words": [
     "hole",
     "sofa",
@@ -16,4 +16,4 @@
 "good_words": [
     "tiger",
     "cow"
-]}]
+]}

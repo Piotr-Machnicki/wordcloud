@@ -1,4 +1,4 @@
-[{"question": "select colors",
+{"question": "select colors",
 "all_words": [
     "jeans",
     "existence",
@@ -19,4 +19,4 @@
     "yellow", 
     "white", 
     "black"
-]}]
+]}
