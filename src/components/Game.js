@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import { Box, Button, Typography } from "@mui/material";
 
-export const Game = () => {
+export const Game = ({ points, setPoints }) => {
   const [data, setData] = useState([]);
   const [answerCheck, setAnswerCheck] = useState(false);
   const [selectedWords, setSelectedWords] = useState([]);
@@ -42,8 +42,16 @@ export const Game = () => {
     }
   };
 
+  const pointsCounter = (item) => {
+    for (let i = 0; i < allWords.length; i++) {
+      selectedWords.includes(item);
+    }
+  };
+
   const handleAnswerCheck = (e) => {
     setAnswerCheck(true);
+    pointsCounter();
+    setPoints(points);
   };
 
   return (

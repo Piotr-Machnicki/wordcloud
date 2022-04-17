@@ -1,12 +1,10 @@
-import { useState } from "react";
-
 import { Theme } from "../theme/theme";
 
 import { Link } from "react-router-dom";
 
 import { Box, Button, Typography } from "@mui/material";
 
-export const Result = () => {
+export const Result = ({ nick, setNick, points, setPoints }) => {
   return (
     <Box sx={{ backgroundColor: Theme.palette.secondary.main }}>
       <Typography
@@ -17,7 +15,7 @@ export const Result = () => {
           padding: "2rem",
         }}
       >
-        Congratulations, Piotr! Your score:
+        Congratulations, {nick}! Your score: {points} points.
       </Typography>
       <Button
         component={Link}

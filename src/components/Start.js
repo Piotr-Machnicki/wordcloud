@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { Theme } from "../theme/theme";
 
 import { Link } from "react-router-dom";
@@ -13,11 +11,9 @@ import {
   Typography,
 } from "@mui/material";
 
-export const Start = () => {
-  const [name, setName] = useState("");
-
-  const handleChangeName = (e) => {
-    setName(e.target.value);
+export const Start = ({ nick, setNick }) => {
+  const handleChangeNick = (e) => {
+    setNick(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -57,7 +53,7 @@ export const Start = () => {
               autoFocus
               placeholder="Enter your nickname here..."
               required
-              value={name}
+              value={nick}
               sx={{
                 height: "3rem",
                 width: "15rem",
@@ -66,7 +62,7 @@ export const Start = () => {
                   backgroundColor: Theme.palette.primary.contrastText,
                 },
               }}
-              onChange={handleChangeName}
+              onChange={handleChangeNick}
             />
             <FormHelperText
               sx={{
