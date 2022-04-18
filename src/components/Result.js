@@ -6,7 +6,6 @@ import { Box, Button, Typography } from "@mui/material";
 
 export const Result = ({ nick, setNick, points, setPoints }) => {
   const handleNewGame = (e) => {
-    setNick("");
     setPoints(0);
   };
 

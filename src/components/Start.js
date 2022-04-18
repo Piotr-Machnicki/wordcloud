@@ -58,6 +58,7 @@ export const Start = ({ nick, setNick, randomizer, setRandomizer }) => {
         >
           <OutlinedInput
             autoFocus
+            value={nick}
             placeholder="Enter your nickname here..."
             sx={{
               height: "3rem",
