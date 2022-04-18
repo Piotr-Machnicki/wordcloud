@@ -3,15 +3,9 @@ import { createTheme } from "@mui/material/styles";
 export const Theme = createTheme({
   palette: {
     primary: {
-      main: "#000",
-      contrastText: "#66cdaa",
+      main: "#fff",
+      contrastText: "#000",
+      hover: "#B0A9AC",
     },
-    secondary: {
-      main: "#424242",
-      contrastText: "#fff",
-    },
-  },
-  breakpoints: {
-    maxWidth1000: "1000px",
   },
 });

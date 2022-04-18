@@ -1,23 +1,54 @@
-import { Theme } from "../theme/theme";
+import { Theme } from "../theme/Theme";
 
 import { Link } from "react-router-dom";
 
 import { Box, Button, Typography } from "@mui/material";
 
 export const Result = ({ nick, setNick, points, setPoints }) => {
+  const handleNewGame = (e) => {
+    setNick("");
+    setPoints(0);
+  };
+
   return (
-    <Box sx={{ backgroundColor: Theme.palette.secondary.main }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Typography
         variant="h3"
         sx={{
-          color: Theme.palette.secondary.contrastText,
-          textAlign: "center",
-          padding: "2rem",
+          color: Theme.palette.primary.contrastText,
+          margin: "1rem",
+          padding: ".5rem",
         }}
       >
-        Congratulations, {nick}! Your score: {points} points.
+        Congratulations, {nick}!
+      </Typography>
+      <Typography
+        variant="h4"
+        sx={{
+          color: Theme.palette.primary.contrastText,
+          padding: ".5rem",
+        }}
+      >
+        Your score:
+      </Typography>
+      <Typography
+        variant="h4"
+        sx={{
+          color: "blue",
+          padding: ".5rem",
+        }}
+      >
+        {points} points
       </Typography>
       <Button
+        onClick={handleNewGame}
         component={Link}
         to="/"
         variant="outlined"
@@ -25,8 +56,7 @@ export const Result = ({ nick, setNick, points, setPoints }) => {
           margin: "1rem",
           height: "3rem",
           color: Theme.palette.primary,
-          backgroundColor: Theme.palette.secondary.contrastText,
-          ":hover": { backgroundColor: Theme.palette.primary.contrastText },
+          backgroundColor: Theme.palette.primary.main,
         }}
       >
         Start again

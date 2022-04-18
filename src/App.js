@@ -6,7 +6,7 @@ import { Result } from "./components/Result";
 
 function App() {
   const [nick, setNick] = useState("");
-  const [points, setPoints] = useState(0);
+  const [points, setPoints] = useState();
   return (
     <>
       <Routes>

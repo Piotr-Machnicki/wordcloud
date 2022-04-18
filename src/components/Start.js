@@ -1,4 +1,4 @@
-import { Theme } from "../theme/theme";
+import { Theme } from "../theme/Theme";
 
 import { Link } from "react-router-dom";
 
@@ -21,11 +21,11 @@ export const Start = ({ nick, setNick }) => {
   };
 
   return (
-    <Box sx={{ backgroundColor: Theme.palette.secondary.main }}>
+    <Box>
       <Typography
         variant="h3"
         sx={{
-          color: Theme.palette.secondary.contrastText,
+          color: Theme.palette.primary.contrastText,
           textAlign: "center",
           padding: "2rem",
         }}
@@ -57,10 +57,6 @@ export const Start = ({ nick, setNick }) => {
               sx={{
                 height: "3rem",
                 width: "15rem",
-                backgroundColor: Theme.palette.secondary.contrastText,
-                ":hover": {
-                  backgroundColor: Theme.palette.primary.contrastText,
-                },
               }}
               onChange={handleChangeNick}
             />
@@ -68,14 +64,12 @@ export const Start = ({ nick, setNick }) => {
               sx={{
                 margin: ".25rem",
                 height: "1rem",
-                color: Theme.palette.secondary.contrastText,
               }}
             >
               Enter your nickname to proceed...
             </FormHelperText>
           </Box>
           <Button
-            type="submit"
             component={Link}
             to="/game"
             variant="outlined"
@@ -83,8 +77,6 @@ export const Start = ({ nick, setNick }) => {
               margin: "1rem",
               height: "3rem",
               color: Theme.palette.primary,
-              backgroundColor: Theme.palette.secondary.contrastText,
-              ":hover": { backgroundColor: Theme.palette.primary.contrastText },
             }}
           >
             Play
