@@ -2,6 +2,8 @@ import { Theme } from "../theme/Theme";
 
 import { Link } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+
 import {
   Box,
   Button,
@@ -16,8 +18,15 @@ export const Start = ({ nick, setNick }) => {
     setNick(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    if (!nick) {
+      e.preventDefault();
+      alert("Text field is empty!");
+    } else {
+      navigate.push("/game");
+    }
   };
 
   return (
@@ -32,8 +41,15 @@ export const Start = ({ nick, setNick }) => {
       >
         Wordcloud game
       </Typography>
-      <form onSubmit={handleSubmit}>
-        <FormGroup
+      <FormGroup
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -41,48 +57,39 @@ export const Start = ({ nick, setNick }) => {
             justifyContent: "center",
           }}
         >
-          <Box
+          <OutlinedInput
+            autoFocus
+            placeholder="Enter your nickname here..."
+            required
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <OutlinedInput
-              autoFocus
-              placeholder="Enter your nickname here..."
-              required
-              value={nick}
-              sx={{
-                height: "3rem",
-                width: "15rem",
-              }}
-              onChange={handleChangeNick}
-            />
-            <FormHelperText
-              sx={{
-                margin: ".25rem",
-                height: "1rem",
-              }}
-            >
-              Enter your nickname to proceed...
-            </FormHelperText>
-          </Box>
-          <Button
-            component={Link}
-            to="/game"
-            variant="outlined"
-            sx={{
-              margin: "1rem",
               height: "3rem",
-              color: Theme.palette.primary,
+              width: "15rem",
+            }}
+            onChange={handleChangeNick}
+          />
+          <FormHelperText
+            sx={{
+              margin: ".25rem",
+              height: "1rem",
             }}
           >
-            Play
-          </Button>
-        </FormGroup>
-      </form>
+            Enter your nickname to proceed...
+          </FormHelperText>
+        </Box>
+        <Button
+          onClick={handleClick}
+          component={Link}
+          to="/game"
+          variant="outlined"
+          sx={{
+            margin: "1rem",
+            height: "3rem",
+            color: Theme.palette.primary,
+          }}
+        >
+          Play
+        </Button>
+      </FormGroup>
     </Box>
   );
 };

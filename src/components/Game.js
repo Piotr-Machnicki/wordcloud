@@ -112,7 +112,7 @@ export const Game = ({ points, setPoints }) => {
                 background: Theme.palette.primary.main,
                 cursor: "pointer",
                 fontSize: "30px",
-                padding: "20px",
+                padding: "25px 20px 20px",
                 color: (() => {
                   if (selectedWords.includes(item)) {
                     return Theme.palette.primary.contrastText;
@@ -129,13 +129,67 @@ export const Game = ({ points, setPoints }) => {
           allWords.length > 0 &&
           answerCheck === true &&
           allWords.map((item) => (
-            <>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {selectedWords.includes(item) && goodWords.includes(item) && (
+                <p
+                  style={{
+                    fontSize: "15px",
+                    color: "green",
+                    margin: "0px",
+                    padding: "0px",
+                  }}
+                >
+                  Good
+                </p>
+              )}
+              {selectedWords.includes(item) &&
+                goodWords.includes(item) === false && (
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      color: "red",
+                      margin: "0px",
+                      padding: "0px",
+                    }}
+                  >
+                    Bad
+                  </p>
+                )}
+              {selectedWords.includes(item) === false &&
+                goodWords.includes(item) && (
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      color: "orange",
+                      margin: "0px",
+                      padding: "0px",
+                    }}
+                  >
+                    Missed
+                  </p>
+                )}
               <button
                 style={{
                   border: "none",
                   background: Theme.palette.primary.main,
                   fontSize: "30px",
-                  padding: "20px",
+                  padding: (() => {
+                    if (selectedWords.includes(item)) {
+                      return "5px 20px 20px";
+                    } else if (goodWords.includes(item)) {
+                      return "5px 20px 20px";
+                    } else {
+                      return "25px 20px 20px";
+                    }
+                  })(),
+
                   color: (() => {
                     if (
                       selectedWords.includes(item) &&
@@ -147,13 +201,18 @@ export const Game = ({ points, setPoints }) => {
                       goodWords.includes(item) === false
                     ) {
                       return "red";
+                    } else if (
+                      selectedWords.includes(item) === false &&
+                      goodWords.includes(item)
+                    ) {
+                      return "orange";
                     }
                   })(),
                 }}
               >
                 {item}
               </button>
-            </>
+            </Box>
           ))}
       </Box>
 
@@ -165,7 +224,6 @@ export const Game = ({ points, setPoints }) => {
             margin: "1rem",
             height: "3rem",
             color: Theme.palette.primary,
-            backgroundColor: Theme.palette.primary.main,
           }}
         >
           Check
@@ -181,7 +239,6 @@ export const Game = ({ points, setPoints }) => {
             margin: "1rem",
             height: "3rem",
             color: Theme.palette.primary,
-            backgroundColor: Theme.palette.primary.main,
           }}
         >
           Finish game

@@ -45,7 +45,7 @@ export const Result = ({ nick, setNick, points, setPoints }) => {
           padding: ".5rem",
         }}
       >
-        {points} points
+        {points} {points === 1 ? "point" : "points"}
       </Typography>
       <Button
         onClick={handleNewGame}
@@ -56,7 +56,6 @@ export const Result = ({ nick, setNick, points, setPoints }) => {
           margin: "1rem",
           height: "3rem",
           color: Theme.palette.primary,
-          backgroundColor: Theme.palette.primary.main,
         }}
       >
         Start again
