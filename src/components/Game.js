@@ -6,29 +6,35 @@ import { Link } from "react-router-dom";
 
 import { Box, Button, Typography } from "@mui/material";
 
-export const Game = ({ points, setPoints }) => {
-  const [data, setData] = useState([]);
+export const Game = ({
+  points,
+  setPoints,
+  randomizer,
+  setRandomizer,
+  dataAnimals,
+  setDataAnimals,
+  dataColors,
+  setDataColors,
+  dataVehicles,
+  setDataVehicles,
+}) => {
   const [answerCheck, setAnswerCheck] = useState(false);
   const [selectedWords, setSelectedWords] = useState([]);
+  const [data, setData] = useState([]);
 
-  const getData = () => {
-    fetch("vehicles.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        setData(myJson);
-      });
+  const getRandomData = () => {
+    if (randomizer === 1) {
+      setData(dataAnimals);
+    } else if (randomizer === 2) {
+      setData(dataColors);
+    } else if (randomizer === 3) {
+      setData(dataVehicles);
+    }
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    getRandomData();
+  });
 
   const allWords = Object.values(data)[1];
   const goodWords = Object.values(data)[2];

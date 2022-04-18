@@ -1,7 +1,5 @@
 import { Theme } from "../theme/Theme";
 
-import { Link } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -13,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 
-export const Start = ({ nick, setNick }) => {
+export const Start = ({ nick, setNick, randomizer, setRandomizer }) => {
   const handleChangeNick = (e) => {
     setNick(e.target.value);
   };
@@ -25,7 +23,8 @@ export const Start = ({ nick, setNick }) => {
       e.preventDefault();
       alert("Text field is empty!");
     } else {
-      navigate.push("/game");
+      setRandomizer(Math.floor(Math.random() * 3 + 1));
+      navigate("/game");
     }
   };
 
@@ -60,7 +59,6 @@ export const Start = ({ nick, setNick }) => {
           <OutlinedInput
             autoFocus
             placeholder="Enter your nickname here..."
-            required
             sx={{
               height: "3rem",
               width: "15rem",
@@ -78,8 +76,6 @@ export const Start = ({ nick, setNick }) => {
         </Box>
         <Button
           onClick={handleClick}
-          component={Link}
-          to="/game"
           variant="outlined"
           sx={{
             margin: "1rem",
