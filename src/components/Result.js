@@ -44,7 +44,7 @@ export const Result = ({ nick, setNick, points, setPoints }) => {
           padding: ".5rem",
         }}
       >
-        {points} {points === 1 ? "point" : "points"}
+        {points} {Math.abs(points) === 1 ? "point" : "points"}
       </Typography>
       <Button
         onClick={handleNewGame}
